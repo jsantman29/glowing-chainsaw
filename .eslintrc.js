@@ -72,7 +72,6 @@ module.exports = {
 	'comma-style': [ 'warn' ],
 	'func-style': [ 'warn' ],
 	'max-depth': [ 'error', 3 ],
-	'max-lines-per-function': [ 'error', 80 ],
 	'no-nested-ternary': [ 'error' ],
 	'no-mixed-operators': [ 'warn' ],
 	'no-multi-assign': [ 'warn' ],
