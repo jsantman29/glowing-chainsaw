@@ -105,7 +105,7 @@ const ResumeDrawer = ({drawerWidth, contentType, setContentType, mobileOpen, han
         );
     };
 
-    const generateLinks = () => {
+    const generateLinks = (isMobile) => {
         const links = [];
         let link;
         categories.forEach(category => {
@@ -117,7 +117,9 @@ const ResumeDrawer = ({drawerWidth, contentType, setContentType, mobileOpen, han
               variant="h6"
               onClick={() => {
                   setContentType(category);
-                  handleDrawerToggle();
+                  if( isMobile ) {
+                      handleDrawerToggle();
+                  }
               }}>
               {category}
           </Link>
@@ -128,8 +130,8 @@ const ResumeDrawer = ({drawerWidth, contentType, setContentType, mobileOpen, han
         return links;
     };
 
-    const renderNavigationBox = () => {
-        const links = generateLinks();
+    const renderNavigationBox = (isMobile) => {
+        const links = generateLinks(isMobile);
         return (
             <Box className={boxStyles.linksContainer}>
                 {links}
@@ -137,11 +139,11 @@ const ResumeDrawer = ({drawerWidth, contentType, setContentType, mobileOpen, han
         );
     };
 
-    const drawer = (
-        <div>
+    const buildDrawer = (isMobile) => {
+        return ( <div>
             {renderTitleBox()}
             <Divider />
-            {renderNavigationBox()}
+            {renderNavigationBox(isMobile)}
             <Divider />
             <Box className={boxStyles.root}>
                 <Link
@@ -149,14 +151,14 @@ const ResumeDrawer = ({drawerWidth, contentType, setContentType, mobileOpen, han
             Download Link Placeholder
                 </Link>
             </Box>
-        </div>
-    );
+        </div> );
+    };
 
-    const drawerPaperProps = {elevation: 4};
+    const drawerPaperProps = {elevation: 6};
 
     return (
         <>
-            <Hidden smUp implementation="js">
+            <Hidden mdUp implementation="js">
                 <Drawer
                     variant="temporary"
                     anchor="left"
@@ -170,10 +172,10 @@ const ResumeDrawer = ({drawerWidth, contentType, setContentType, mobileOpen, han
                         keepMounted: true,
                     }}
                 >
-                    {drawer}
+                    {buildDrawer(true)}
                 </Drawer>
             </Hidden>
-            <Hidden xsDown implementation="js">
+            <Hidden smDown implementation="js">
                 <Drawer
                     classes={{
                         paperAnchorDockedLeft: classes.test,
@@ -183,7 +185,7 @@ const ResumeDrawer = ({drawerWidth, contentType, setContentType, mobileOpen, han
                     PaperProps={drawerPaperProps}
                     open
                 >
-                    {drawer}
+                    {buildDrawer(false)}
                 </Drawer>
             </Hidden>
         </>

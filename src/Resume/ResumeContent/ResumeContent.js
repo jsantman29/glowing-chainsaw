@@ -10,27 +10,25 @@ const ResumeContent = ({drawerWidth, contentType, setPageType}) => {
 
     const useGridStyles = makeStyles((theme) => ({
         root: {
-            display: 'flex',
-            [theme.breakpoints.up('sm')]: {
+            [theme.breakpoints.up('md')]: {
                 paddingLeft: drawerWidth + theme.spacing(20),
-                padding: theme.spacing(20),
+                padding: theme.spacing(16),
             },
             height: '100%',
             alignItems: 'center',
             justifyContent: 'center',
-            padding: theme.spacing(6),
+            padding: theme.spacing(2),
         },
         item: {
             display: 'flex',
-            flex: '1',
             alignItems: 'center',
             justifyContent: 'center',
-            padding: theme.spacing(2),
         },
     }));
 
     const useCardStyles = makeStyles((theme) => ({
         root: {
+            flexGrow: 1,
             padding: theme.spacing(4),
             maxWidth: '760px',
         },
@@ -79,7 +77,7 @@ const ResumeContent = ({drawerWidth, contentType, setPageType}) => {
         }
         return (
             <Grid 
-                className={gridStyles.root} 
+                className={gridStyles.root}
                 container>
                 {content}
             </Grid>
