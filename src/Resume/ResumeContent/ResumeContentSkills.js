@@ -19,32 +19,50 @@ const ResumeContentSkills = ({props}) => {
 
     const cardStyles = useCardStyles();
 
-    const renderSkills = () => {
-        const cardContents = [
-            {   
-                header: 'Languages',
-                content: <><b>Proficient:</b> Java, Python, Javascript, HTML, CSS.<br/>
-                    <b>Capable:</b> SQL and Bash.</>, 
-            },
-            {   
-                header: 'Software',
-                content: <><b>Operating Systems:</b> Windows 10, Linux. <br/>
-                    <b>Libraries and Frameworks:</b> React, Jest, Material UI, Node, Express, Flask. <br/>
-                    <b>Tools:</b> Postgres, Webpack, AWS (Lambdas, API Gateway, RDS, EC2), Git. </>,
-            },
-            {
-                header: 'General Knowledge',
-                content: <ul>
-                    <li>Agile Project Management</li>
-                    <li>Production Deployment and Monitoring</li>
-                    <li>Object Oriented Programming</li>
-                    <li>Database Administration</li>
-                    <li>Full Stack Development</li>
-                    <li>Microservice and serverless architecture</li>
-                </ul>  ,
-            },
-        ];
+    const cardContents = [
+        {   
+            header: 'Languages',
+            content: <><b>Proficient:</b> Java, Python, Javascript, HTML, CSS.<br/>
+                <b>Capable:</b> SQL and Bash.</>, 
+        },
+        {   
+            header: 'Software',
+            content: <><b>Operating Systems:</b> Windows 10, Linux. <br/>
+                <b>Libraries and Frameworks:</b> React, Jest, Material UI, Node, Express, Flask. <br/>
+                <b>Tools:</b> Postgres, Webpack, AWS (Lambdas, API Gateway, RDS, EC2), Git. </>,
+        },
+        {
+            header: 'General Knowledge',
+            content: <ul>
+                <li>Agile Project Management</li>
+                <li>Production Deployment and Monitoring</li>
+                <li>Object Oriented Programming</li>
+                <li>Database Administration</li>
+                <li>Full Stack Development</li>
+                <li>Microservice and serverless architecture</li>
+            </ul>  ,
+        },
+    ];
 
+    const renderSkillsCard = (cardContent) => {
+        return (
+            <Card
+                elevation={props.elevation}
+                classes={cardStyles}>
+                <CardHeader
+                    classes={props.cardHeader}
+                    title={cardContent.header}
+                    titleTypographyProps={props.cardHeaderTypography}/>
+                <CardContent>
+                    <Typography variant="h6">
+                        {cardContent.content}
+                    </Typography>
+                </CardContent>
+            </Card>
+        );
+    };
+
+    const renderSkills = () => {
         return (
             <Grid
                 container
@@ -57,36 +75,12 @@ const ResumeContentSkills = ({props}) => {
                     <Grid
                         item
                         xs={12}>
-                        <Card
-                            elevation={props.elevation}
-                            classes={cardStyles}>
-                            <CardHeader
-                                classes={props.cardHeader}
-                                title={cardContents[0].header}
-                                titleTypographyProps={props.cardHeaderTypography}/>
-                            <CardContent>
-                                <Typography variant="h6">
-                                    {cardContents[0].content}
-                                </Typography>
-                            </CardContent>
-                        </Card>
+                        {renderSkillsCard(cardContents[0])}
                     </Grid>
                     <Grid
                         item
                         xs={12}>
-                        <Card
-                            elevation={props.elevation}
-                            classes={cardStyles}>
-                            <CardHeader
-                                classes={props.cardHeader}
-                                title={cardContents[1].header}
-                                titleTypographyProps={props.cardHeaderTypography}/>
-                            <CardContent>
-                                <Typography variant="h6">
-                                    {cardContents[1].content}
-                                </Typography>
-                            </CardContent>
-                        </Card>
+                        {renderSkillsCard(cardContents[1])}
                     </Grid>  
                 </Grid>
                 <Grid
@@ -94,19 +88,7 @@ const ResumeContentSkills = ({props}) => {
                     container
                     className={props.gridItem}
                     lg={6}>
-                    <Card
-                        elevation={props.elevation}
-                        classes={cardStyles}>
-                        <CardHeader
-                            classes={props.cardHeader}
-                            title={cardContents[2].header}
-                            titleTypographyProps={props.cardHeaderTypography}/>
-                        <CardContent>
-                            <Typography variant="h6">
-                                {cardContents[2].content}
-                            </Typography>
-                        </CardContent>
-                    </Card>
+                    {renderSkillsCard(cardContents[2])}
                 </Grid>
             </Grid>); 
     };

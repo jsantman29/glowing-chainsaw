@@ -8,7 +8,7 @@ import Link from '@material-ui/core/Link';
 import { makeStyles } from '@material-ui/core/styles';
 
 import pic from './common/sprout.png';
-
+import ResumeDownloadButton from './ResumeDownloadButton';
 
 
 const ResumeDrawer = ({drawerWidth, contentType, setContentType, mobileOpen, handleDrawerToggle}) => {
@@ -52,17 +52,22 @@ const ResumeDrawer = ({drawerWidth, contentType, setContentType, mobileOpen, han
         link: {
             textAlign: 'center',
         },
+        button: {
+            display: 'flex',
+            padding: theme.spacing(2),
+            alignItems: 'center',
+        },
     }));
   
     const useLinkStyles = makeStyles((theme) => ({
         root: {
             color: theme.palette.text.primary,
             '&:hover': {
-                color: theme.palette.secondary.main,
+                color: theme.palette.primary.light,
             },
         },
         selected: {
-            color: theme.palette.secondary.main,
+            color: theme.palette.primary.light,
             textDecoration: 'underline',
             '&:hover': {
                 color: theme.palette.primary.main,
@@ -70,9 +75,16 @@ const ResumeDrawer = ({drawerWidth, contentType, setContentType, mobileOpen, han
         },
     }));
 
+    const useDividerStyles = makeStyles((theme) => ({
+        root: {
+            height: '2px',
+        },
+    }));
+
     const classes = useStyles();
     const boxStyles = useBoxStyles();
     const linkStyles = useLinkStyles();
+    const dividerStyles = useDividerStyles();
 
     const name = 'JohnRobert Delos Santos';
     const title = 'Full Stack Engineer';
@@ -142,14 +154,11 @@ const ResumeDrawer = ({drawerWidth, contentType, setContentType, mobileOpen, han
     const buildDrawer = (isMobile) => {
         return ( <div>
             {renderTitleBox()}
-            <Divider />
+            <Divider classes={dividerStyles} />
             {renderNavigationBox(isMobile)}
-            <Divider />
-            <Box className={boxStyles.root}>
-                <Link
-                    href="#">
-            Download Link Placeholder
-                </Link>
+            <Divider classes={dividerStyles} />
+            <Box className={boxStyles.button}>
+                <ResumeDownloadButton/>
             </Box>
         </div> );
     };

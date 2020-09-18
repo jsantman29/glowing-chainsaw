@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 
 import './App.css';
 import Resume from './Resume/Resume';
+import Projects from './Projects/Projects';
+import _ from 'lodash';
+
 
 const App = () => {
 
@@ -13,10 +16,11 @@ const App = () => {
             return <Resume
                 setPageType={setPageType}
             />;
-        case 'Project':
-            return <div> ProjectStuff. </div>;
         default:
-            return <div> ERROR. </div>;
+            return <Projects
+                pageType={pageType}
+                setPageType={setPageType}
+            />;
         }
     };
 

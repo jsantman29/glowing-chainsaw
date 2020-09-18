@@ -5,6 +5,7 @@ import Grid from '@material-ui/core/Grid';
 import ResumeContentSummary from './ResumeContentSummary';
 import ResumeContentEducation from './ResumeContentEducation';
 import ResumeContentSkills from './ResumeContentSkills';
+import ResumeContentProjects from './ResumeContentProjects';
 
 const ResumeContent = ({drawerWidth, contentType, setPageType}) => {
 
@@ -13,10 +14,12 @@ const ResumeContent = ({drawerWidth, contentType, setPageType}) => {
             [theme.breakpoints.up('md')]: {
                 paddingLeft: drawerWidth + theme.spacing(20),
                 padding: theme.spacing(16),
+                height: '100%',
+                alignItems: 'center',
+                justifyContent: 'center',
+                marginTop: '0px',
             },
-            height: '100%',
-            alignItems: 'center',
-            justifyContent: 'center',
+            marginTop: '50px',
             padding: theme.spacing(2),
         },
         item: {
@@ -70,9 +73,10 @@ const ResumeContent = ({drawerWidth, contentType, setPageType}) => {
             content = <ResumeContentSkills props={props}/>;
             break;
         case 'Projects':
+            content = <ResumeContentProjects props={props} setPageType={setPageType}/>;
             break;
         default:
-            content = <ResumeContentSkills props={props}/>;
+            content = <ResumeContentSummary props={props}/>;
             break;
         }
         return (
