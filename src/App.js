@@ -1,19 +1,33 @@
-import React from 'react';
-import ThemeProvider from '@material-ui/styles/ThemeProvider';
-import CssBaseline from '@material-ui/core/CssBaseline';
+import React, { useState } from 'react';
 
 import './App.css';
-import theme from './theme';
+import Resume from './Resume/Resume';
+import Projects from './Projects/Projects';
 
 const App = () => {
-    
+
+    const [ pageType, setPageType ] = useState('Resume');
+
+    const renderApp = () => {
+        switch(pageType) {
+        case 'Resume':
+            return <Resume
+                setPageType={setPageType}
+            />;
+        default:
+            return <Projects
+                pageType={pageType}
+                setPageType={setPageType}
+            />;
+        }
+    };
+
     return (
-        <ThemeProvider theme={theme}>
-            <CssBaseline/>
-            Butt
-        </ThemeProvider>
+        <>
+            {renderApp()}
+        </>
     );
+    
 };
 
 export default App;
-
