@@ -3,8 +3,6 @@ import React, { useState } from 'react';
 import './App.css';
 import Resume from './Resume/Resume';
 import Projects from './Projects/Projects';
-import _ from 'lodash';
-
 
 const App = () => {
 

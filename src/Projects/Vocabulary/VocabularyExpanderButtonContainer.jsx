@@ -7,7 +7,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { getWordFrequencies, getWords } from './js/vocabulary_expander_library';
 import { postFilteredText } from './js/textAPI_library';
 
-function VocabularyExpanderButtonContainer({text, setWordFrequencies, handleClear}) {
+const VocabularyExpanderButtonContainer = ({text, setWordFrequencies, handleClear}) => {
 
     const useButtonStyles = makeStyles((theme) => ({
         buttonContainer: {
@@ -27,17 +27,15 @@ function VocabularyExpanderButtonContainer({text, setWordFrequencies, handleClea
     }));
 
     const generateWordFrequencies = () => {
-        const words = getWords(text);
-        setWordFrequencies(getWordFrequencies(words));
-        // postFilteredText(text)
-        //     .then((response) => {
-        //         return response.json();
-        //     })
-        //     .then(responseJson => {
-        //         words = responseJson.body;
-        //         alert(words);
-        //         //setWordFrequencies(getWordFrequencies(words));
-        //     });
+        let words = getWords(text);
+        postFilteredText(text)
+            .then((response) => {
+                return response.json();
+            })
+            .then(responseJson => {
+                words = getWords(responseJson.body);
+                setWordFrequencies(getWordFrequencies(words));
+            });
     };
 
     const buttonStyles = useButtonStyles();
