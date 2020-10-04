@@ -51,9 +51,7 @@ const ResumeContentProjects = ({props, setPageType}) => {
             commonly used words. It is integrated with a thesaurus API so that alternatives for overused words can be found.</>,
             technologies: 'HTML, CSS, React, REST API, AWS Lambda, Python.',
             codebase: 'https://duckduckgo.com/',
-            view: () => {
-                setPageType('VocabularyExpander');
-            },
+            view: 'https://ve.jdelossantos.me',
         },
         {
             name: 'Barebones Auction Site',
@@ -120,14 +118,14 @@ const ResumeContentProjects = ({props, setPageType}) => {
 
     const renderProjects = () => {
         return (
-            <Grid container spacing={2}>
+            <>
                 <Grid item xs={12} lg={6}>
                     {renderProjectCard(projects[0])}
                 </Grid>
                 <Grid item xs={12} lg={6}>
                     {renderProjectCard(projects[1])}
                 </Grid>
-            </Grid>
+            </>
             
         );
     };

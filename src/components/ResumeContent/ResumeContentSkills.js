@@ -6,7 +6,6 @@ import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
 import makeStyles from '@material-ui/core/styles/makeStyles';
 
-
 const ResumeContentSkills = ({props}) => {
 
     const useCardStyles = makeStyles((theme) => ({
@@ -33,14 +32,14 @@ const ResumeContentSkills = ({props}) => {
         },
         {
             header: 'General Knowledge',
-            content: <ul>
-                <li>Agile Project Management</li>
-                <li>Production Deployment and Monitoring</li>
-                <li>Object Oriented Programming</li>
-                <li>Database Administration</li>
-                <li>Full Stack Development</li>
-                <li>Microservice and serverless architecture</li>
-            </ul>  ,
+            content: <>
+                <p>Agile Project Management</p>
+                <p>Production Deployment and Monitoring</p>
+                <p>Object Oriented Programming</p>
+                <p>Database Administration</p>
+                <p>Full Stack Development</p>
+                <p>Microservice and serverless architecture</p>
+            </>  ,
         },
     ];
 
@@ -54,7 +53,7 @@ const ResumeContentSkills = ({props}) => {
                     title={cardContent.header}
                     titleTypographyProps={props.cardHeaderTypography}/>
                 <CardContent>
-                    <Typography variant="h6">
+                    <Typography variant="h6" align="center">
                         {cardContent.content}
                     </Typography>
                 </CardContent>
@@ -64,10 +63,8 @@ const ResumeContentSkills = ({props}) => {
 
     const renderSkills = () => {
         return (
-            <Grid
-                container
-                spacing={2}>
-                <Grid 
+            <>
+         <Grid 
                     item 
                     container
                     spacing={2}
@@ -90,7 +87,8 @@ const ResumeContentSkills = ({props}) => {
                     lg={6}>
                     {renderSkillsCard(cardContents[2])}
                 </Grid>
-            </Grid>); 
+            </>
+  ); 
     };
 
     return (

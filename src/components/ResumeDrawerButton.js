@@ -2,10 +2,7 @@ import React from 'react';
 import makeStyles from '@material-ui/core/styles/makeStyles';
 import Button from '@material-ui/core/Button';
 
-const ResumeDownloadButton = () => {
-
-    const buttonText = 'Download Resume as PDF';
-    const resumeLink = 'https://duckduckgo.com/';
+const ResumeDrawerButton = ({buttonText, link}) => {
 
     const useButtonStyles = makeStyles((theme) => ({
         root: {
@@ -24,12 +21,12 @@ const ResumeDownloadButton = () => {
     return (
         <Button 
             classes={buttonStyles}
-            href={resumeLink}
-            target="_blank" 
+            href={link}
+            target="_self" 
             rel="noopener noreferrer">
             {buttonText}
         </Button>
     );
 };
 
-export default ResumeDownloadButton;
+export default ResumeDrawerButton;

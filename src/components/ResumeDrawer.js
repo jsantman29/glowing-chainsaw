@@ -7,11 +7,15 @@ import Box from '@material-ui/core/Box';
 import Link from '@material-ui/core/Link';
 import { makeStyles } from '@material-ui/core/styles';
 
-import pic from './common/sprout.png';
-import ResumeDownloadButton from './ResumeDownloadButton';
+import pic from '../common/sprout.png';
+import ResumeDrawerButton from './ResumeDrawerButton';
+import { render } from '@testing-library/react';
 
 
 const ResumeDrawer = ({drawerWidth, contentType, setContentType, mobileOpen, handleDrawerToggle}) => {
+
+    const name = 'JohnRobert Delos Santos';
+    const title = 'Full Stack Engineer';
 
     const useStyles = makeStyles((theme) => ({
         image: {
@@ -54,7 +58,7 @@ const ResumeDrawer = ({drawerWidth, contentType, setContentType, mobileOpen, han
         },
         button: {
             display: 'flex',
-            padding: theme.spacing(2),
+            padding: theme.spacing(1),
             alignItems: 'center',
         },
     }));
@@ -86,15 +90,6 @@ const ResumeDrawer = ({drawerWidth, contentType, setContentType, mobileOpen, han
     const linkStyles = useLinkStyles();
     const dividerStyles = useDividerStyles();
 
-    const name = 'JohnRobert Delos Santos';
-    const title = 'Full Stack Engineer';
-    const categories = [
-        'Summary',
-        'Education',
-        'Skills',
-        'Projects',
-    ];
-
     const renderTitleBox = () => {
         return (
             <Box className={boxStyles.root}>
@@ -118,28 +113,65 @@ const ResumeDrawer = ({drawerWidth, contentType, setContentType, mobileOpen, han
     };
 
     const generateLinks = (isMobile) => {
+
+        const categories = [
+            'Summary',
+            'Education',
+            'Skills',
+            'Projects',
+        ];
+
         const links = [];
         let link;
         categories.forEach(category => {
             link = 
-      <Box className={boxStyles.link}>
-          <Link 
-              className={contentType === category ? linkStyles.selected : linkStyles.root}
-              component="button"
-              variant="h6"
-              onClick={() => {
-                  setContentType(category);
-                  if( isMobile ) {
-                      handleDrawerToggle();
-                  }
-              }}>
-              {category}
-          </Link>
-      </Box>;
+                <Box className={boxStyles.link}>
+                    <Link 
+                        className={contentType === category ? linkStyles.selected : linkStyles.root}
+                        component="button"
+                        variant="h6"
+                        onClick={() => {
+                            setContentType(category);
+                            if( isMobile ) {
+                                handleDrawerToggle();
+                            }
+                        }}>
+                        {category}
+                    </Link>
+                </Box>;
             
             links.push(link);
         });
         return links;
+    };
+
+    const renderButtons = () => {
+
+        const renderedButtons = [];
+
+        const buttonData = [
+            {
+                'text': 'Github',
+                'link': 'https://github.com/jsantman29',
+            },
+            {
+                'text': 'Resume',
+                'link': '/jdelossantos_resume.pdf',
+            },
+        ];
+
+        buttonData.forEach((button) => {
+            renderedButtons.push(
+                <Box className={boxStyles.button}>
+                    <ResumeDrawerButton
+                        buttonText={button.text}
+                        link={button.link}
+                    />
+                </Box>
+            );
+        })
+
+        return renderedButtons;
     };
 
     const renderNavigationBox = (isMobile) => {
@@ -157,9 +189,7 @@ const ResumeDrawer = ({drawerWidth, contentType, setContentType, mobileOpen, han
             <Divider classes={dividerStyles} />
             {renderNavigationBox(isMobile)}
             <Divider classes={dividerStyles} />
-            <Box className={boxStyles.button}>
-                <ResumeDownloadButton/>
-            </Box>
+            {renderButtons()}
         </div> );
     };
 

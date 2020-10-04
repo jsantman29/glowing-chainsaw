@@ -9,7 +9,7 @@ import CardContent from '@material-ui/core/CardContent';
 const ResumeContentSummary = ({props}) => {
     const renderSummary = () => {
         const summaryHeader = 'Summary';
-        const summaryText = 'A full stack engineer with a broad skillset. My greatest strength is that I have a strong foundation across many different tools and languages, coupled with the fact that I learn extremely quickly - this allows me to jump in to any environment and immediately start adding value, well above what is expected of a junior level engineer. I seek out and conquer complex problems to apply what I know and to challenge myself so that I can always be improving.';
+        const summaryText = 'A full stack engineer with a broad skillset. My greatest strength is that I have a strong foundation across many different tools and languages, coupled with the fact that I learn extremely quickly - this allows me to jump in to any environment and immediately start adding value. I seek out and conquer complex problems to apply what I know and to challenge myself so that I can always be improving. I enjoy learning from my peers and I am always excited to pick up new skills.';
         return (
             <Grid item className={props.gridItem} xs={12}>
                 <Card

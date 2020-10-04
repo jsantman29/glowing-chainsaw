@@ -11,8 +11,9 @@
 # production
 /build
 
-# lambda code
-src/Projects/filter-text-lambda
+# shell scripts
+start-dev-env.sh
+build-prod.sh
 
 # misc
 .DS_Store

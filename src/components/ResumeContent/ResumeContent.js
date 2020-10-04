@@ -8,7 +8,7 @@ import ResumeContentSkills from './ResumeContentSkills';
 import ResumeContentProjects from './ResumeContentProjects';
 
 const ResumeContent = ({drawerWidth, contentType, setPageType}) => {
-
+    
     const useGridStyles = makeStyles((theme) => ({
         root: {
             [theme.breakpoints.up('md')]: {
@@ -17,9 +17,7 @@ const ResumeContent = ({drawerWidth, contentType, setPageType}) => {
                 height: '100%',
                 alignItems: 'center',
                 justifyContent: 'center',
-                marginTop: '0px',
             },
-            marginTop: '50px',
             padding: theme.spacing(2),
         },
         item: {
@@ -83,7 +81,11 @@ const ResumeContent = ({drawerWidth, contentType, setPageType}) => {
             <Grid 
                 className={gridStyles.root}
                 container>
-                {content}
+                <Grid
+                    container
+                    spacing={2}>
+                    {content}
+                </Grid>
             </Grid>
         );
     };
