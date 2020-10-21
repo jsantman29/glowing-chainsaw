@@ -50,7 +50,7 @@ const ResumeContentProjects = ({props, setPageType}) => {
             description: <>Developed myself as a personal project. A web application that takes a text and returns word frequency to identify 
             commonly used words. It is integrated with a thesaurus API so that alternatives for overused words can be found.</>,
             technologies: 'HTML, CSS, React, REST API, AWS Lambda, Python.',
-            codebase: 'https://duckduckgo.com/',
+            codebase: 'https://github.com/jsantman29/vocab-expander',
             view: 'https://ve.jdelossantos.me',
         },
         {
@@ -70,7 +70,7 @@ const ResumeContentProjects = ({props, setPageType}) => {
             <Button 
                 classes={buttonStyles} 
                 href={project.codebase}
-                target="_blank" 
+                target="_self" 
                 rel="noopener noreferrer">
                     Code
             </Button>);
@@ -79,7 +79,9 @@ const ResumeContentProjects = ({props, setPageType}) => {
             buttons.push(
                 <Button 
                     classes={buttonStyles} 
-                    onClick={project.view}>
+                    href={project.view}
+                    target="_self" 
+                    rel="noopener noreferrer">
                         View
                 </Button>);
         }

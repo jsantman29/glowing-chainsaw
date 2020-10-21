@@ -27,7 +27,7 @@ const ResumeContentSkills = ({props}) => {
         {   
             header: 'Software',
             content: <><b>Operating Systems:</b> Windows 10, Linux. <br/>
-                <b>Libraries and Frameworks:</b> React, Jest, Material UI, Node, Express, Flask. <br/>
+                <b>Libraries and Frameworks:</b> React, Material UI, Node, Express, Flask. <br/>
                 <b>Tools:</b> Postgres, Webpack, AWS (Lambdas, API Gateway, RDS, EC2), Git. </>,
         },
         {
@@ -64,7 +64,7 @@ const ResumeContentSkills = ({props}) => {
     const renderSkills = () => {
         return (
             <>
-         <Grid 
+                <Grid 
                     item 
                     container
                     spacing={2}
@@ -88,7 +88,7 @@ const ResumeContentSkills = ({props}) => {
                     {renderSkillsCard(cardContents[2])}
                 </Grid>
             </>
-  ); 
+        ); 
     };
 
     return (

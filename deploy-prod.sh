@@ -2,8 +2,7 @@
 IMAGE_NAME="jsantman29/personal-resume"
 IMAGE_TAR="docker_image.tar"
 VPS="jsantman29@jsantman29.me"
-
-export CURRENT_VPS=${VPS}
+VPS_DIR="~/sites/docker-images"
 
 # Uses the current Dockerfile to build an image.
 echo "Building Docker image..."
@@ -14,11 +13,11 @@ echo "Saving Docker image as tar file..."
 docker save -o ${IMAGE_TAR} ${IMAGE_NAME}
 
 # SSH into a VPS, deploy the docker file, and load it.
-echo "Transferring Docker image to ${CURRENT_VPS}"
-scp ${IMAGE_TAR} ${CURRENT_VPS}:~/sites/docker-images/.
+echo "Transferring Docker image to ${VPS}"
+scp ${IMAGE_TAR} ${VPS}:${VPS_DIR}/.
 
 echo "Removing it locally..."
 rm ${IMAGE_TAR}
 
-echo "Deploying Docker image on ${CURRENT_VPS}"
-ssh ${CURRENT_VPS} "cd ~/sites/docker-images/; docker load -i ${IMAGE_TAR}; rm ${IMAGE_TAR};"
+echo "Deploying Docker image on ${VPS}"
+ssh ${VPS} "cd ${VPS_DIR}/; docker load -i ${IMAGE_TAR}; rm ${IMAGE_TAR};"

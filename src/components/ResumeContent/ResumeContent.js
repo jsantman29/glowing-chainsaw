@@ -2,10 +2,9 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 
-import ResumeContentSummary from './ResumeContentSummary';
-import ResumeContentEducation from './ResumeContentEducation';
 import ResumeContentSkills from './ResumeContentSkills';
 import ResumeContentProjects from './ResumeContentProjects';
+import ResumeContentHome from './ResumeContentHome';
 
 const ResumeContent = ({drawerWidth, contentType, setPageType}) => {
     
@@ -61,11 +60,8 @@ const ResumeContent = ({drawerWidth, contentType, setPageType}) => {
     const renderResumeContent = () => {
         let content;
         switch(contentType) {
-        case 'Summary':
-            content = <ResumeContentSummary props={props}/>;
-            break;
-        case 'Education':
-            content = <ResumeContentEducation props={props}/>;
+        case 'Home':
+            content = <ResumeContentHome props={props}/>;
             break;
         case 'Skills':
             content = <ResumeContentSkills props={props}/>;
@@ -74,7 +70,7 @@ const ResumeContent = ({drawerWidth, contentType, setPageType}) => {
             content = <ResumeContentProjects props={props} setPageType={setPageType}/>;
             break;
         default:
-            content = <ResumeContentSummary props={props}/>;
+            content = <ResumeContentHome props={props}/>;
             break;
         }
         return (

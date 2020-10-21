@@ -7,7 +7,7 @@ import Box from '@material-ui/core/Box';
 import Link from '@material-ui/core/Link';
 import { makeStyles } from '@material-ui/core/styles';
 
-import pic from '../common/sprout.png';
+import pic from '../common/resumePic.png';
 import ResumeDrawerButton from './ResumeDrawerButton';
 import { render } from '@testing-library/react';
 
@@ -115,8 +115,7 @@ const ResumeDrawer = ({drawerWidth, contentType, setContentType, mobileOpen, han
     const generateLinks = (isMobile) => {
 
         const categories = [
-            'Summary',
-            'Education',
+            'Home',
             'Skills',
             'Projects',
         ];
@@ -158,6 +157,10 @@ const ResumeDrawer = ({drawerWidth, contentType, setContentType, mobileOpen, han
                 'text': 'Resume',
                 'link': '/jdelossantos_resume.pdf',
             },
+            {
+                'text': 'Email',
+                'link': 'mailto:nacljohn2@pm.me',
+            },
         ];
 
         buttonData.forEach((button) => {
@@ -167,9 +170,9 @@ const ResumeDrawer = ({drawerWidth, contentType, setContentType, mobileOpen, han
                         buttonText={button.text}
                         link={button.link}
                     />
-                </Box>
+                </Box>,
             );
-        })
+        });
 
         return renderedButtons;
     };
