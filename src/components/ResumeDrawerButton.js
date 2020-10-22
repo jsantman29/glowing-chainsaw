@@ -8,9 +8,9 @@ const ResumeDrawerButton = ({buttonText, link}) => {
         root: {
             flex: 1,
             width: '75%',
-            backgroundColor: theme.palette.secondary.main,
+            backgroundColor: theme.palette.primary.main,
             '&:hover': {
-                backgroundColor: theme.palette.secondary.light,
+                backgroundColor: theme.palette.primary.light,
             },
             borderRadius: '75px',
         },

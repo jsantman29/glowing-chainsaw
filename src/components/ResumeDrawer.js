@@ -19,7 +19,7 @@ const ResumeDrawer = ({drawerWidth, contentType, setContentType, mobileOpen, han
 
     const useStyles = makeStyles((theme) => ({
         image: {
-            borderRadius: '50%',
+            borderRadius: '25px',
             width: '100%',
             height: 'auto',
         },
@@ -45,8 +45,8 @@ const ResumeDrawer = ({drawerWidth, contentType, setContentType, mobileOpen, han
             textAlign: 'center',
         },
         image: {
-            paddingLeft: theme.spacing(10),
-            paddingRight: theme.spacing(10),
+            paddingLeft: theme.spacing(7),
+            paddingRight: theme.spacing(7),
             paddingTop: theme.spacing(4),
             paddingBottom: theme.spacing(2.5),
         },
