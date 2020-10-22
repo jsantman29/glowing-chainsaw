@@ -51,7 +51,7 @@ const ResumeContentProjects = ({props, setPageType}) => {
             commonly used words. It is integrated with a thesaurus API so that alternatives for overused words can be found.</>,
             technologies: 'HTML, CSS, React, REST API, AWS Lambda, Python.',
             codebase: 'https://github.com/jsantman29/vocab-expander',
-            view: 'https://ve.jdelossantos.me',
+            view: 'https://ve.jsantman29.me',
         },
         {
             name: 'Barebones Auction Site',
