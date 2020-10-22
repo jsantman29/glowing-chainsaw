@@ -161,6 +161,10 @@ const ResumeDrawer = ({drawerWidth, contentType, setContentType, mobileOpen, han
                 'text': 'Email',
                 'link': 'mailto:nacljohn2@pm.me',
             },
+            {
+                'text': 'Source Code',
+                'link': 'https://github.com/jsantman29/glowing-chainsaw',
+            }
         ];
 
         buttonData.forEach((button) => {
