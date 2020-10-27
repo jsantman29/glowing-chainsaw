@@ -7,7 +7,6 @@ import CardActions from '@material-ui/core/CardActions';
 import Grid from '@material-ui/core/Grid';
 import makeStyles from '@material-ui/core/styles/makeStyles';
 import Typography from '@material-ui/core/Typography';
-import Divider from '@material-ui/core/Divider';
 
 const ResumeContentProjects = ({props, setPageType}) => {
 
@@ -108,8 +107,7 @@ const ResumeContentProjects = ({props, setPageType}) => {
                     <Typography variant="h6">
                         {project.description}
                     </Typography>
-                    <Divider />
-                    <br></br>
+                    <br/>
                     <Typography variant="h6">
                         {project.technologies}
                     </Typography>
