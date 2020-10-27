@@ -31,12 +31,12 @@ const ResumeContentProjects = ({props, setPageType}) => {
     const useButtonStyles = makeStyles((theme) => ({
         root: {
             flex: 1,
-            backgroundColor: theme.palette.primary.main,
+            backgroundColor: theme.palette.secondary.main,
             '&:hover': {
-                backgroundColor: theme.palette.primary.light,
+                backgroundColor: theme.palette.secondary.light,
             },
             maxWidth: '25%',
-            borderRadius: '50px',
+            borderRadius: '5px',
         },
     }));
 
@@ -68,6 +68,7 @@ const ResumeContentProjects = ({props, setPageType}) => {
         
         buttons.push(
             <Button 
+                size="large"
                 classes={buttonStyles} 
                 href={project.codebase}
                 target="_self" 
@@ -77,7 +78,8 @@ const ResumeContentProjects = ({props, setPageType}) => {
 
         if (project.view !== null) {
             buttons.push(
-                <Button 
+                <Button
+                    size="large"
                     classes={buttonStyles} 
                     href={project.view}
                     target="_self" 

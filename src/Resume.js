@@ -9,7 +9,7 @@ import ResumeContent from './components/ResumeContent/ResumeContent';
 
 const Resume = ({setPageType}) => {
 
-    const [ contentType, setContentType ] = useState('Summary');
+    const [ contentType, setContentType ] = useState('Home');
     const [ mobileOpen, setMobileOpen ] = useState(false);
 
     const drawerWidth = 320;

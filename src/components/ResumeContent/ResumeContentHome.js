@@ -34,7 +34,7 @@ const ResumeContentHome = ({props}) => {
         },
         {   
             header: 'Education',
-            subheader: 'Rutgers University: Sept 2017 - May 2020',
+            subheader: 'B.S. from Rutgers University: Sept 2017 - May 2020',
             content: <><b>Major:</b> Computer Science<br/>
                 <b>GPA:</b> 3.635<br/>
                 <b>Honors:</b> Cum Laude</>,

@@ -1,25 +1,28 @@
 import React, { useState } from 'react';
-import Divider from '@material-ui/core/Divider';
 import Drawer from '@material-ui/core/Drawer';
 import Hidden from '@material-ui/core/Hidden';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-import Link from '@material-ui/core/Link';
+
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
+
 import { makeStyles } from '@material-ui/core/styles';
 
-import pic from '../common/resumePic.png';
-import ResumeDrawerButton from './ResumeDrawerButton';
-import { render } from '@testing-library/react';
-
+import pic from '../common/resumePfp.png';
+import ResumeDrawerIconButtons from './ResumeDrawerIconButtons';
 
 const ResumeDrawer = ({drawerWidth, contentType, setContentType, mobileOpen, handleDrawerToggle}) => {
 
     const name = 'JohnRobert Delos Santos';
     const title = 'Full Stack Engineer';
 
+    const [ selectedIndex, setSelectedIndex ] = useState(0);
+
     const useStyles = makeStyles((theme) => ({
         image: {
-            borderRadius: '25px',
+            borderRadius: '50% !important',
             width: '100%',
             height: 'auto',
         },
@@ -32,7 +35,7 @@ const ResumeDrawer = ({drawerWidth, contentType, setContentType, mobileOpen, han
         drawerPaper: {
             width: drawerWidth,
         },
-        test: {
+        docked: {
             borderRight: '0px',
         },
         padded: {
@@ -45,50 +48,47 @@ const ResumeDrawer = ({drawerWidth, contentType, setContentType, mobileOpen, han
             textAlign: 'center',
         },
         image: {
-            paddingLeft: theme.spacing(7),
-            paddingRight: theme.spacing(7),
-            paddingTop: theme.spacing(4),
-            paddingBottom: theme.spacing(2.5),
+            paddingLeft: theme.spacing(4),
+            paddingRight: theme.spacing(4),
+            paddingTop: theme.spacing(1),
+            paddingBottom: theme.spacing(1),
         },
-        linksContainer: {
-            padding: theme.spacing(2),
-        },
-        link: {
-            textAlign: 'center',
-        },
-        button: {
+        iconButtonsContainer: {
             display: 'flex',
-            padding: theme.spacing(1),
-            alignItems: 'center',
+            position: 'absolute',
+            bottom: '0px',
+            width: '100%',
         },
     }));
   
-    const useLinkStyles = makeStyles((theme) => ({
+    const useSectionLinkStyles = makeStyles((theme) => ({
         root: {
+            textAlign: 'center',
+            backgroundColor: theme.palette.secondary.main,
             color: theme.palette.text.primary,
+            marginBottom: '1px',
+            WebkitBoxShadow: '0 4px 6px -6px #222',
+            MozBoxShadow: '0 4px 6px -6px #222',
+            boxShadow: '0 4px 6px -6px #222',
             '&:hover': {
-                color: theme.palette.primary.light,
+                backgroundColor: theme.palette.secondary.light,
             },
         },
         selected: {
-            color: theme.palette.primary.light,
-            textDecoration: 'underline',
-            '&:hover': {
-                color: theme.palette.primary.main,
+            '&.Mui-selected': {
+                backgroundColor: theme.palette.secondary.dark,
+                '&:hover': {
+                    backgroundColor: theme.palette.secondary.dark,
+                },
             },
-        },
-    }));
-
-    const useDividerStyles = makeStyles((theme) => ({
-        root: {
-            height: '2px',
         },
     }));
 
     const classes = useStyles();
     const boxStyles = useBoxStyles();
-    const linkStyles = useLinkStyles();
-    const dividerStyles = useDividerStyles();
+    const sectionLinkStyles = useSectionLinkStyles();
+    const sectionLinkTypographyProps = {variant: 'h6'};
+    const drawerPaperProps = {elevation: 6};
 
     const renderTitleBox = () => {
         return (
@@ -112,7 +112,15 @@ const ResumeDrawer = ({drawerWidth, contentType, setContentType, mobileOpen, han
         );
     };
 
-    const generateLinks = (isMobile) => {
+    const handleListItemClick = (event, category, index, isMobile) => {
+        setSelectedIndex(index);
+        setContentType(category);
+        if (isMobile) {
+            handleDrawerToggle();
+        }
+    };
+
+    const generateSectionLinks = (isMobile) => {
 
         const categories = [
             'Home',
@@ -122,109 +130,57 @@ const ResumeDrawer = ({drawerWidth, contentType, setContentType, mobileOpen, han
 
         const links = [];
         let link;
-        categories.forEach(category => {
+        categories.forEach((category, index) => {
             link = 
-                <Box className={boxStyles.link}>
-                    <Link 
-                        className={contentType === category ? linkStyles.selected : linkStyles.root}
-                        component="button"
-                        variant="h6"
-                        onClick={() => {
-                            setContentType(category);
-                            if( isMobile ) {
-                                handleDrawerToggle();
-                            }
-                        }}>
+                <ListItem
+                    button
+                    classes={sectionLinkStyles}
+                    selected={selectedIndex === index}
+                    onClick={(event) => handleListItemClick(event, category, index, isMobile)}>
+                    <ListItemText
+                        primaryTypographyProps={sectionLinkTypographyProps}>
                         {category}
-                    </Link>
-                </Box>;
+                    </ListItemText>
+                </ListItem>;
             
             links.push(link);
         });
         return links;
     };
 
-    const renderButtons = () => {
-
-        const renderedButtons = [];
-
-        const buttonData = [
-            {
-                'text': 'Github',
-                'link': 'https://github.com/jsantman29',
-            },
-            {
-                'text': 'Resume',
-                'link': '/jdelossantos_resume.pdf',
-            },
-            {
-                'text': 'Email',
-                'link': 'mailto:nacljohn2@pm.me',
-            },
-            {
-                'text': 'Source Code',
-                'link': 'https://github.com/jsantman29/glowing-chainsaw',
-            }
-        ];
-
-        buttonData.forEach((button) => {
-            renderedButtons.push(
-                <Box className={boxStyles.button}>
-                    <ResumeDrawerButton
-                        buttonText={button.text}
-                        link={button.link}
-                    />
-                </Box>,
-            );
-        });
-
-        return renderedButtons;
+    const renderSectionNavigation = (isMobile) => {
+        const links = generateSectionLinks(isMobile);
+        return (
+            <List>
+                {links}
+            </List>
+        );
     };
 
-    const renderNavigationBox = (isMobile) => {
-        const links = generateLinks(isMobile);
+    const renderDrawerIconButtons = () => {
         return (
-            <Box className={boxStyles.linksContainer}>
-                {links}
+            <Box class={boxStyles.iconButtonsContainer}>
+                <ResumeDrawerIconButtons/>
             </Box>
         );
     };
 
     const buildDrawer = (isMobile) => {
-        return ( <div>
-            {renderTitleBox()}
-            <Divider classes={dividerStyles} />
-            {renderNavigationBox(isMobile)}
-            <Divider classes={dividerStyles} />
-            {renderButtons()}
-        </div> );
+        return ( 
+            <div>
+                {renderTitleBox()}
+                {renderSectionNavigation(isMobile)}
+                {renderDrawerIconButtons()}
+            </div> 
+        );
     };
 
-    const drawerPaperProps = {elevation: 6};
-
-    return (
-        <>
-            <Hidden mdUp implementation="js">
-                <Drawer
-                    variant="temporary"
-                    anchor="left"
-                    open={mobileOpen}
-                    onClose={handleDrawerToggle}
-                    classes={{
-                        paperAnchorDockedLeft: classes.test,
-                        paper: classes.drawerPaper,
-                    }}
-                    ModalProps={{
-                        keepMounted: true,
-                    }}
-                >
-                    {buildDrawer(true)}
-                </Drawer>
-            </Hidden>
+    const renderDrawer = () => {
+        return (
             <Hidden smDown implementation="js">
                 <Drawer
                     classes={{
-                        paperAnchorDockedLeft: classes.test,
+                        paperAnchorDockedLeft: classes.docked,
                         paper: classes.drawerPaper,
                     }}
                     variant="permanent"
@@ -234,6 +190,36 @@ const ResumeDrawer = ({drawerWidth, contentType, setContentType, mobileOpen, han
                     {buildDrawer(false)}
                 </Drawer>
             </Hidden>
+        );
+    };
+
+    const renderMobileDrawer = () => {
+        return (
+            <Hidden mdUp implementation="js">
+                <Drawer
+                    variant="temporary"
+                    anchor="left"
+                    open={mobileOpen}
+                    onClose={handleDrawerToggle}
+                    classes={{
+                        paperAnchorDockedLeft: classes.docked,
+                        paper: classes.drawerPaper,
+                    }}
+                    ModalProps={{
+                        keepMounted: true,
+                    }}
+                >
+                    {buildDrawer(true)}
+                </Drawer>
+            </Hidden>
+        );
+    };
+
+
+    return (
+        <>
+            {renderMobileDrawer()}
+            {renderDrawer()}
         </>
     );
 };
