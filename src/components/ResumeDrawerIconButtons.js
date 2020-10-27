@@ -28,9 +28,9 @@ const ResumeDrawerIconButtons = () => {
         root: {
             borderRadius: '50%',
             fontSize: '3rem',
-            color: theme.palette.secondary.main,
+            color: theme.palette.tertiary.main,
             '&:hover': {
-                color: theme.palette.secondary.light,
+                color: theme.palette.tertiary.light,
             },
         },
         label: {
