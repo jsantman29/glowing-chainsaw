@@ -13,6 +13,7 @@ const ResumeDrawerIconButtons = () => {
     const useGridContainerStyles = makeStyles((theme) => ({
         root: {
             backgroundColor: theme.palette.primary.dark,
+            height: '50px',
         },
     }));
 
@@ -25,7 +26,6 @@ const ResumeDrawerIconButtons = () => {
 
     const useButtonStyles = makeStyles((theme) => ({
         root: {
-            flex: 1,
             borderRadius: '50%',
             fontSize: '3rem',
             color: theme.palette.secondary.main,

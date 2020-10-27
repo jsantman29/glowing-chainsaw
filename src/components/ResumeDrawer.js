@@ -55,9 +55,10 @@ const ResumeDrawer = ({drawerWidth, contentType, setContentType, mobileOpen, han
         },
         iconButtonsContainer: {
             display: 'flex',
-            position: 'absolute',
-            bottom: '0px',
+            justifyContent: 'flex-start',
+            backgroundColor: theme.palette.primary.dark,
             width: '100%',
+            flex: '1',
         },
     }));
   
@@ -81,6 +82,9 @@ const ResumeDrawer = ({drawerWidth, contentType, setContentType, mobileOpen, han
                     backgroundColor: theme.palette.secondary.dark,
                 },
             },
+        },
+        customList: {
+            paddingBottom: '0px',
         },
     }));
 
@@ -151,27 +155,29 @@ const ResumeDrawer = ({drawerWidth, contentType, setContentType, mobileOpen, han
     const renderSectionNavigation = (isMobile) => {
         const links = generateSectionLinks(isMobile);
         return (
-            <List>
+            <List
+                className={sectionLinkStyles.customList}>
                 {links}
             </List>
         );
     };
 
-    const renderDrawerIconButtons = () => {
+    const renderIconButtonsContainer = () => {
         return (
-            <Box class={boxStyles.iconButtonsContainer}>
-                <ResumeDrawerIconButtons/>
+            <Box
+                className={boxStyles.iconButtonsContainer}>
+                    <ResumeDrawerIconButtons/>
             </Box>
         );
     };
 
     const buildDrawer = (isMobile) => {
         return ( 
-            <div>
+            <>
                 {renderTitleBox()}
                 {renderSectionNavigation(isMobile)}
-                {renderDrawerIconButtons()}
-            </div> 
+                {renderIconButtonsContainer()}
+            </> 
         );
     };
 
