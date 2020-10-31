@@ -5,6 +5,10 @@ html {
 body {
   margin: 0;
   height: 100%;
+  background-image: url(./common/background.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed; 
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
