@@ -1,4 +1,5 @@
 import React from 'react';
+import Fade from '@material-ui/core/Fade';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Card from '@material-ui/core/Card';
@@ -89,11 +90,25 @@ const ResumeContentHome = ({props}) => {
                 </Grid>
             </>
         );
-    }; 
+    };
+
+    const renderPage = () => {
+        return (
+            <Fade
+                in={true}
+                timeout={props.fadeTimeout}>
+                <Grid
+                    container
+                    spacing={2}>
+                    {renderSummary()}
+                </Grid>
+            </Fade>
+        );
+    };
 
     return (
         <>
-            {renderSummary()}
+            {renderPage()}
         </>
     );
 };

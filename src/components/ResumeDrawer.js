@@ -166,7 +166,7 @@ const ResumeDrawer = ({drawerWidth, contentType, setContentType, mobileOpen, han
         return (
             <Box
                 className={boxStyles.iconButtonsContainer}>
-                    <ResumeDrawerIconButtons/>
+                <ResumeDrawerIconButtons/>
             </Box>
         );
     };

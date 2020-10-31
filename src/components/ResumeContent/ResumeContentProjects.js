@@ -4,6 +4,7 @@ import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
+import Fade from '@material-ui/core/Fade';
 import Grid from '@material-ui/core/Grid';
 import makeStyles from '@material-ui/core/styles/makeStyles';
 import Typography from '@material-ui/core/Typography';
@@ -132,9 +133,23 @@ const ResumeContentProjects = ({props, setPageType}) => {
         );
     };
 
+    const renderPage = () => {
+        return (
+            <Fade
+                in={true}
+                timeout={props.fadeTimeout}>
+                <Grid
+                    container
+                    spacing={2}>
+                    {renderProjects()}
+                </Grid>
+            </Fade>
+        );
+    };
+
     return (
         <>
-            {renderProjects()}
+            {renderPage()}
         </>
     );
 };

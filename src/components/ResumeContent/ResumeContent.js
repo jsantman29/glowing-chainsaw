@@ -1,6 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
+import Fade from '@material-ui/core/Fade';
 
 import ResumeContentSkills from './ResumeContentSkills';
 import ResumeContentProjects from './ResumeContentProjects';
@@ -55,6 +56,10 @@ const ResumeContent = ({drawerWidth, contentType, setPageType}) => {
         cardHeaderTypography: {variant: 'h4'},
         cardSubheaderTypography: {color: 'textPrimary'},
         gridItem: gridStyles.item,
+        fadeTimeout: {
+            enter: 1000,
+            exit: 1000,
+        },
     };
 
     const renderResumeContent = () => {
@@ -77,11 +82,15 @@ const ResumeContent = ({drawerWidth, contentType, setPageType}) => {
             <Grid 
                 className={gridStyles.root}
                 container>
-                <Grid
-                    container
-                    spacing={2}>
-                    {content}
-                </Grid>
+                <Fade in={true} timeout={{enter: 2000, exit: 2000}}>
+
+                    <Grid
+                        container
+                        spacing={2}>
+                        {content}
+                    </Grid>
+                </Fade>
+
             </Grid>
         );
     };
