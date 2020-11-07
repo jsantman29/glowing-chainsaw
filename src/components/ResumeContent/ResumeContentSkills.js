@@ -22,14 +22,16 @@ const ResumeContentSkills = ({props}) => {
     const cardContents = [
         {   
             header: 'Languages',
-            content: <><b>Proficient:</b> Java, Python, Javascript, HTML, CSS.<br/>
-                <b>Capable:</b> SQL and Bash.</>, 
+            content: <>
+                <b>Proficient:</b> Java, Python, JavaScript, TypeScript, HTML, CSS.<br/>
+                <b>Capable:</b> C, SQL, Bash.</>, 
         },
         {   
             header: 'Software',
-            content: <><b>Operating Systems:</b> Windows 10, Linux. <br/>
-                <b>Libraries and Frameworks:</b> React, Material UI, Node, Express, Flask. <br/>
-                <b>Tools:</b> Postgres, Webpack, AWS (Lambdas, API Gateway, RDS, EC2), Git. </>,
+            content: <>
+                <b>Operating Systems:</b> Windows 10, Linux. <br/>
+                <b>Libraries and Frameworks:</b> React, Material-UI, Node, Express, Flask, JDBC, Servlet. <br/>
+                <b>Tools:</b> Git, AWS (Lambdas, API Gateway, RDS, EC2), Docker, Postgres, Webpack. </>,
         },
         {
             header: 'General Knowledge',
