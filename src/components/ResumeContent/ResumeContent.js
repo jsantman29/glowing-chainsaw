@@ -1,29 +1,33 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import Fade from '@material-ui/core/Fade';
 
 import ResumeContentSkills from './ResumeContentSkills';
 import ResumeContentProjects from './ResumeContentProjects';
 import ResumeContentHome from './ResumeContentHome';
+import ResumeContentWorkExperience from './ResumeContentWorkExperience';
 
 const ResumeContent = ({drawerWidth, contentType, setPageType}) => {
     
     const useGridStyles = makeStyles((theme) => ({
         root: {
-            [theme.breakpoints.up('md')]: {
-                paddingLeft: drawerWidth + theme.spacing(20),
-                padding: theme.spacing(16),
+            [theme.breakpoints.up('sm', 'xl')]: {
                 height: '100%',
                 alignItems: 'center',
                 justifyContent: 'center',
             },
-            padding: theme.spacing(2),
+            [theme.breakpoints.up('md')]: {
+                paddingLeft: drawerWidth + theme.spacing(20),
+                padding: theme.spacing(16),
+            },
+            [theme.breakpoints.only('sm')]: {
+                paddingLeft: drawerWidth + theme.spacing(4),
+                padding: theme.spacing(4),
+            },
+            padding: '24px',
         },
         item: {
             display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
         },
     }));
 
@@ -53,13 +57,9 @@ const ResumeContent = ({drawerWidth, contentType, setPageType}) => {
         card: useCardStyles(),
         elevation: 6,
         cardHeader: useCardHeaderStyles(),
-        cardHeaderTypography: {variant: 'h4'},
+        cardHeaderTypography: {variant: 'h5'},
         cardSubheaderTypography: {color: 'textPrimary'},
         gridItem: gridStyles.item,
-        fadeTimeout: {
-            enter: 1000,
-            exit: 1000,
-        },
     };
 
     const renderResumeContent = () => {
@@ -68,11 +68,14 @@ const ResumeContent = ({drawerWidth, contentType, setPageType}) => {
         case 'Home':
             content = <ResumeContentHome props={props}/>;
             break;
-        case 'Skills':
-            content = <ResumeContentSkills props={props}/>;
+        case 'Work Experience':
+            content = <ResumeContentWorkExperience props={props} setPageType={setPageType}/>;
             break;
         case 'Projects':
             content = <ResumeContentProjects props={props} setPageType={setPageType}/>;
+            break;
+        case 'Skills':
+            content = <ResumeContentSkills props={props}/>;
             break;
         default:
             content = <ResumeContentHome props={props}/>;
@@ -82,14 +85,11 @@ const ResumeContent = ({drawerWidth, contentType, setPageType}) => {
             <Grid 
                 className={gridStyles.root}
                 container>
-                <Fade in={true} timeout={{enter: 2000, exit: 2000}}>
-
-                    <Grid
-                        container
-                        spacing={2}>
-                        {content}
-                    </Grid>
-                </Fade>
+                <Grid
+                    container
+                    spacing={2}>
+                    {content}
+                </Grid>
 
             </Grid>
         );
@@ -100,6 +100,7 @@ const ResumeContent = ({drawerWidth, contentType, setPageType}) => {
             {renderResumeContent()}
         </>
     );
+    
 };
 
 export default ResumeContent;

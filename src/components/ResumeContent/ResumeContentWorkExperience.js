@@ -1,13 +1,12 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
-import CardContent from '@material-ui/core/CardContent';
 import makeStyles from '@material-ui/core/styles/makeStyles';
 import ResumeFadeContainer from './components/ResumeFadeContainer';
+import ResumeCardContent from './components/ResumeCardContent';
 
-const ResumeContentHome = ({props}) => {
+const ResumeContentWorkExperience = ({props}) => {
 
     const useCardStyles = makeStyles((theme) => ({
         root: {
@@ -21,9 +20,15 @@ const ResumeContentHome = ({props}) => {
 
     const cardContents = [
         {   
-            header: 'Introduction',
-            subheader: '',
-            content: <>I'm John, a full stack engineer with a broad skillset. My greatest strength is that I have a strong foundation across many different tools and languages, coupled with the fact that I learn extremely quickly - this allows me to jump in to any environment and immediately start adding value. I seek out and conquer complex problems to apply what I know and to challenge myself so that I can always be improving. I enjoy learning from my peers and I am always excited to pick up new skills.</>, 
+            header: 'SarVia Group',
+            subheader: 'August 2020 - Present',
+            bulletPoints: [
+                'Worked on an agile team as a contracted software engineer',
+                'Developed a mobile app for a subscription based cigar business using React Native, Expo, Python, Flask, Postgres, Firebase and AWS',
+                'Developed a web based application for a construction contracting conglomerate to manage data on different job sites using React, Node.js, Express, Cassandra, and AWS',
+                'Managed the CI/CD and production deployments for both the mobile app and web app',
+                'Wrote and reviewed technical documentation for both projects',
+            ],
         },
     ];
 
@@ -38,16 +43,12 @@ const ResumeContentHome = ({props}) => {
                     titleTypographyProps={props.cardHeaderTypography}
                     subheader={cardContent.subheader}
                     subheaderTypographyProps={props.cardSubheaderTypography}/>
-                <CardContent>
-                    <Typography variant="h6" align="center">
-                        {cardContent.content}
-                    </Typography>
-                </CardContent>
+                <ResumeCardContent bulletPoints={cardContent.bulletPoints}/>
             </Card>
         );
     };
 
-    const renderSummary = () => {
+    const renderWork = () => {
         return (
             <>  
                 <Grid
@@ -63,9 +64,9 @@ const ResumeContentHome = ({props}) => {
 
     return (
         <>
-            <ResumeFadeContainer childComponent={renderSummary()}/>
+            <ResumeFadeContainer childComponent={renderWork()}/>
         </>
     );
 };
 
-export default ResumeContentHome;
+export default ResumeContentWorkExperience;

@@ -13,7 +13,7 @@ const useAppBarStyles = makeStyles((theme) => ({
         color: theme.palette.background,
         marginRight: theme.spacing(2),
         marginLeft: theme.spacing(2),
-        [theme.breakpoints.up('md')]: {
+        [theme.breakpoints.up('sm')]: {
             display: 'none',
         },
     },

@@ -2,12 +2,11 @@ import React from 'react';
 import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
-import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
-import Fade from '@material-ui/core/Fade';
 import Grid from '@material-ui/core/Grid';
 import makeStyles from '@material-ui/core/styles/makeStyles';
-import Typography from '@material-ui/core/Typography';
+import ResumeCardContent from './components/ResumeCardContent';
+import ResumeFadeContainer from './components/ResumeFadeContainer';
 
 const ResumeContentProjects = ({props, setPageType}) => {
 
@@ -47,17 +46,21 @@ const ResumeContentProjects = ({props, setPageType}) => {
     const projects = [
         {
             name: 'Vocabulary Expander',
-            description: <>Developed myself as a personal project. A web application that takes a text and returns word frequency to identify 
-            commonly used words. It is integrated with a thesaurus API so that alternatives for overused words can be found.</>,
-            technologies: 'HTML, CSS, React, REST API, AWS Lambda, Python.',
+            bulletPoints: [
+                'Created a web application that takes a text and returns word frequency to identify commonly used words using HTML, CSS, and React',
+                'Implemented text filtering and thesaurus functionality using a REST API deployed in Amazon API Gateway with a backend built using AWS Lambdas and Python',
+            ],
             codebase: 'https://github.com/jsantman29/vocab-expander',
             view: 'https://ve.jsantman29.me',
         },
         {
             name: 'Barebones Auction Site',
-            description: <>Worked in a group with three other students to create a simple proof of concept for an auction website. 
-            Led front and back end development by defining coding standards and system architecture.</>,
-            technologies: 'HTML, CSS, Java, Javascript, JDBC, JSP, MySQL.',
+            bulletPoints: [
+                'Worked in a group with three other students to create a simple auction website',
+                'Guided development by defining coding standards and system architecture using MVC',
+                'Designed and implemented the front end using HTML, CSS, Javascript, and JSP with tag files for easy templating',
+                'Implemented the back end using Java, JDBC, and MySQL',
+            ],
             codebase: 'https://github.com/jsantman29/purple-shovel',
             view: null,
         },
@@ -103,17 +106,8 @@ const ResumeContentProjects = ({props, setPageType}) => {
                 <CardHeader
                     classes={props.cardHeader}
                     title={project.name}
-                    titleTypographyProps={props.cardHeaderType}/>
-                <CardContent>
-                    <Typography variant="h6">
-                        {project.description}
-                    </Typography>
-                    <br/>
-                    <Typography variant="h6">
-                        {project.technologies}
-                    </Typography>
-                </CardContent>
-                
+                    titleTypographyProps={props.cardHeaderTypography}/>
+                <ResumeCardContent bulletPoints={project.bulletPoints}/>
                 {renderProjectCardActions(project)}
             </Card>
         );
@@ -133,23 +127,9 @@ const ResumeContentProjects = ({props, setPageType}) => {
         );
     };
 
-    const renderPage = () => {
-        return (
-            <Fade
-                in={true}
-                timeout={props.fadeTimeout}>
-                <Grid
-                    container
-                    spacing={2}>
-                    {renderProjects()}
-                </Grid>
-            </Fade>
-        );
-    };
-
     return (
         <>
-            {renderPage()}
+            <ResumeFadeContainer childComponent={renderProjects()}/>
         </>
     );
 };

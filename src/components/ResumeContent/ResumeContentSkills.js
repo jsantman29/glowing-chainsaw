@@ -1,11 +1,11 @@
 import React from 'react';
-import Fade from '@material-ui/core/Fade';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
 import makeStyles from '@material-ui/core/styles/makeStyles';
+import ResumeFadeContainer from './components/ResumeFadeContainer';
 
 const ResumeContentSkills = ({props}) => {
 
@@ -30,8 +30,8 @@ const ResumeContentSkills = ({props}) => {
             header: 'Software',
             content: <>
                 <b>Operating Systems:</b> Windows 10, Linux. <br/>
-                <b>Libraries and Frameworks:</b> React, Material-UI, Node, Express, Flask, JDBC, Servlet. <br/>
-                <b>Tools:</b> Git, AWS (Lambdas, API Gateway, RDS, EC2), Docker, Postgres, Webpack. </>,
+                <b>Libraries and Frameworks:</b> React, React Native, Material-UI, Node, Express, Flask, Firebase, JDBC, Servlet. <br/>
+                <b>Tools:</b> Git, AWS (Lambdas, API Gateway, RDS, EC2), Docker, nginx, Expo, Postgres, Cassandra. </>,
         },
         {
             header: 'General Knowledge',
@@ -94,23 +94,9 @@ const ResumeContentSkills = ({props}) => {
         ); 
     };
 
-    const renderPage = () => {
-        return (
-            <Fade
-                in={true}
-                timeout={props.fadeTimeout}>
-                <Grid
-                    container
-                    spacing={2}>
-                    {renderSkills()}
-                </Grid>
-            </Fade>
-        );
-    };
-
     return (
         <>
-            {renderPage()}
+            <ResumeFadeContainer childComponent={renderSkills()}/>
         </>
     );
 };

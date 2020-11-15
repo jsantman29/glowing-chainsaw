@@ -128,8 +128,9 @@ const ResumeDrawer = ({drawerWidth, contentType, setContentType, mobileOpen, han
 
         const categories = [
             'Home',
-            'Skills',
+            'Work Experience',
             'Projects',
+            'Skills',
         ];
 
         const links = [];
@@ -183,7 +184,7 @@ const ResumeDrawer = ({drawerWidth, contentType, setContentType, mobileOpen, han
 
     const renderDrawer = () => {
         return (
-            <Hidden smDown implementation="js">
+            <Hidden xsDown implementation="js">
                 <Drawer
                     classes={{
                         paperAnchorDockedLeft: classes.docked,
